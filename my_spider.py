@@ -1,4 +1,5 @@
 import re
+import time
 import random
 import requests
 from bs4 import BeautifulSoup
@@ -111,6 +112,9 @@ def get_product_data(product_url, meta, cookies):
             response = requests.get(product_url, headers=headers, cookies=cookies)
         except Exception as e:
             print('Following exception occurred:\n', e)
+            seconds = random.randrange(1, 3)
+            print('Cooling for ', seconds, ' second(s)...')
+            time.sleep(seconds)
             continue
         break
 
